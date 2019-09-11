@@ -1,7 +1,6 @@
 
 package com.tavisca.workspaces.ToDo.RestAPI.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tavisca.workspaces.ToDo.RestAPI.dataObjects.Success;
 import com.tavisca.workspaces.ToDo.RestAPI.dataObjects.Task;
 import com.tavisca.workspaces.ToDo.RestAPI.service.Service;
 import org.junit.Test;
@@ -9,9 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
@@ -265,11 +261,4 @@ public class MasterControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json("{\"message\":\"failed\",\"description\":\"The Task Being Delete Cannot be Empty\"}"));
     }
-
-
-
-
-
-
-
 }
