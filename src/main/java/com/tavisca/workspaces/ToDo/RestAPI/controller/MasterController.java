@@ -24,7 +24,8 @@ public class MasterController {
 
     @CrossOrigin
     @GetMapping
-    public Object returnUsers(){
+    public Object getAllTheTasks(){
+        System.out.println("I am Here");
         if(todoData.isEmpty())
             return new ResponseEntity<Error>(new Error("failed","There is No Content in Database"), HttpStatus.NO_CONTENT);
 
@@ -33,10 +34,9 @@ public class MasterController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<?> returnNewTask(@RequestBody Task task){
+    public ResponseEntity<?> addNewTask(@RequestBody Task task){
         if(task == null || task.getData().equals(""))
             return new ResponseEntity<Error>(new Error("failed","Task Cannot Be Empty"), HttpStatus.BAD_REQUEST);
-        task.setId(todoData.size()+"");
         if(this.todoData.add(task)){
             return new ResponseEntity<Success>(new Success("Success","Added"), HttpStatus.CREATED);
         }
@@ -47,7 +47,7 @@ public class MasterController {
 
     @CrossOrigin
     @PutMapping
-    public ResponseEntity<?> returnUpdatedTask(@RequestBody ArrayList<Task> newTasks){
+    public ResponseEntity<?> updateOldTask(@RequestBody ArrayList<Task> newTasks){
         Task oldTask = newTasks.get(0);
         if(oldTask == null || oldTask.getId() == null){
             return new ResponseEntity<Error>(new Error("failed","The Task being modify doesn't Exists"), HttpStatus.BAD_REQUEST);
@@ -66,8 +66,7 @@ public class MasterController {
 
     @CrossOrigin
     @DeleteMapping
-    public ResponseEntity<?> returnFreshTask(@RequestBody Task oldTask){
-
+    public ResponseEntity<?> deleteOldTask(@RequestBody Task oldTask){
         if(oldTask == null || oldTask.getId() == null){
             return new ResponseEntity<Error>(new Error("failed","The Task Being Delete Cannot be Empty"), HttpStatus.BAD_REQUEST);
         }

@@ -14,6 +14,7 @@ public class ToDoService implements Service {
 
     @Override
     public boolean add(Task task) {
+        task.setId(this.tasks.size()+"");
         return this.tasks.add(task);
     }
 
@@ -41,16 +42,6 @@ public class ToDoService implements Service {
         return this.tasks.contains(task);
     }
 
-    private void sortAndReorderingList(){
-        this.tasks.sort(Comparator.comparing(Task::getId));
-        ArrayList<Task> newArrayList = new ArrayList<Task>();
-        for(Task task : this.tasks){
-            int index = this.tasks.indexOf(task);
-            newArrayList.add(new Task(index+"",task.getData()));
-        }
-        this.tasks = newArrayList;
-    }
-
     @Override
     public boolean update(Task oldTask, Task newTask) {
         if(this.tasks.remove(oldTask) && this.tasks.add(newTask)){
@@ -63,5 +54,15 @@ public class ToDoService implements Service {
     @Override
     public int size() {
         return this.tasks.size();
+    }
+
+    private void sortAndReorderingList(){
+        this.tasks.sort(Comparator.comparing(Task::getId));
+        ArrayList<Task> newArrayList = new ArrayList<Task>();
+        for(Task task : this.tasks){
+            int index = this.tasks.indexOf(task);
+            newArrayList.add(new Task(index+"",task.getData()));
+        }
+        this.tasks = newArrayList;
     }
 }
