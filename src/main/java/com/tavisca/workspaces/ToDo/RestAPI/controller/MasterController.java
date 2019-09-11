@@ -21,7 +21,6 @@ public class MasterController {
     @CrossOrigin
     @GetMapping
     public Object getAllTheTasks(){
-        System.out.println("I am Here");
         if(todoData.isEmpty())
             return new ResponseEntity<Error>(new Error("failed","There is No Content in Database"), HttpStatus.NO_CONTENT);
 

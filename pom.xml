@@ -11,6 +11,7 @@
 	<groupId>com.tavisca.workspaces</groupId>
 	<artifactId>To-Do-RestAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>To-Do-RestAPI</name>
 	<description>Demo project for Spring Boot</description>
 
